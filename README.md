@@ -88,6 +88,8 @@ new_post_data = {
         "title": post.get("title", {}).get("rendered", "Untitled"), # Post title
         "content": post.get("content", {}).get("rendered", ""), # Post text content
         "featured_media": image_id if image_id else None, # Post image
+        # ...
+}
 ```
 
 ## Contributing
