@@ -1,6 +1,6 @@
 # Persi's Easy Wordpress Post Migration Tool
 
-PEWPMT is a free and open source lightweight python console app or python script designed to simplify the migration of WordPress posts from an old website to a new one. It leverages the WordPress REST API to download posts and, when configured, to upload these posts to another WordPress site.
+PEWPMT is a free and open source lightweight python console app or python script designed to simplify the migration of WordPress posts from an old website to a new one. It leverages the WordPress REST API to download posts and to upload these posts to another WordPress site.
 
 ## Overview
 
