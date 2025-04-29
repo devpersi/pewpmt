@@ -37,11 +37,11 @@ It is ideal for developers or website administrators who need a free solution fo
 ### downloader.py config
 API URLs: Open downloader.py and update the base_url variable with your source WordPress site's REST API endpoint. For example:
 ```py
-base_url = "https://mysourcewordpresssite.com/wp-json/wp/v2/posts"
+base_url = "https://<mysourcewordpresssite.com>/wp-json/wp/v2/posts"
 ```
 Free Wordpress Sites URLs: If you are using a free WordPress.com site, you might need to use an alternative URL. Uncomment and adjust as needed:
 ```py
-base_url = "https://public-api.wordpress.com/wp/v2/sites/mysourcewordpresssite.wordpress.com/posts"
+base_url = "https://public-api.wordpress.com/wp/v2/sites/<mysourcewordpresssite.wordpress.com>/posts"
 ```
 Pagination: Set the per_page variable to control how many posts to fetch per API call.  
 WARNING: My source websites stopped sending responses when per_page was set to a value over 8!!! Play around with it if you want but it will probably break on the first page for values over 12.
@@ -51,16 +51,15 @@ JSON File: The uploader reads from wordpress_posts.json. Ensure this file exists
 
 API URLs: Open uploader.py and update the variables with your source and target WordPress site's REST API endpoint. For example:
 ```py
-old_media_base_url = "https://mysourcewordpresssite.com/wp-json/wp/v2/media/"
-target_base_url = "https://targetsite.com/wp-json/wp/v2/posts"
-new_media_base_url = "https://targetsite.com/wp-json/wp/v2/media"
+old_media_base_url = "https://<mysourcewordpresssite.com>/wp-json/wp/v2/media/"
+target_base_url = "https://<targetsite.com>/wp-json/wp/v2/posts"
+new_media_base_url = "https://<targetsite.com>/wp-json/wp/v2/media"
 ```
 
 Credentials: Update the credentials in uploader.py with your target WordPress username and app password:
 ```py
-target_username = 'username'      # Replace with your actual username.
-target_password = 'password'      # Replace with your WordPress app password.
-target_auth = (target_username, target_password)
+target_username = '<username>'      # Replace with your actual username.
+target_password = '<password>'      # Replace with your WordPress app password.
 ```
 WARNING: Keep your credentials secure. Never share your username or password with anyone.
 
