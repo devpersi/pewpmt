@@ -82,7 +82,7 @@ for idx, post in enumerate(all_posts, start=1):
 
 #### Customize post info
 To ensure you only get the info you need you will have to add or remove categories of data set by the `new_post_data` variable in the `uploader.py` file. 
-The default option only copies the title, the text content and the image of the original post. To see what other info is available you can get consult the relevant [wordpress api docs](https://developer.wordpress.org/rest-api/reference/posts/).
+The default option only copies the title, the text content and the image of the original post. To see what other info is available, consult the relevant [wordpress api docs](https://developer.wordpress.org/rest-api/reference/posts/).
 ```py
 new_post_data = {
         "title": post.get("title", {}).get("rendered", "Untitled"), # Post title
