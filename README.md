@@ -30,7 +30,7 @@ It is ideal for developers or website administrators who need a free solution fo
     ```
 6. Check the content of your .json file and test your uploader for a few posts before uploading them all by running
     ```
-    python downloader.py
+    python uploader.py
     ```
 
 ## Configuration
