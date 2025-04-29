@@ -73,7 +73,8 @@ WARNING: Keep your credentials secure. Never share your username or password wit
 #### Featured Image Handling
 The uploader script includes a function upload_image() which downloads the image data from the old site, fetches the actual image URL, and uploads it to the target site. This function also adds a delay to avoid rate limits. Shut this off to speed up the process or lose your mind trying to understand why we have to ask the API for the image url twice.
 
-Testing with fewer than all posts: Add a break command in the for loop in uploader.py, for example:
+#### Testing with fewer than all posts
+Add a break command in the for loop in uploader.py, for example:
 ```py
 for idx, post in enumerate(all_posts, start=1):
     if idx > 4:
