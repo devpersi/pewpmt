@@ -19,19 +19,33 @@ It is ideal for developers or website administrators who need a free solution fo
 - **Rate Limit Handling:** Both scripts include delays (2 seconds in downloader and 1 second in uploader) to help avoid triggering API rate limits.
 - **Image Handling:** Uploader script processes featured images – downloading the image data from the old site and re-uploading it to the target.
 
+## Requirements
+
+- [Python](https://www.python.org/downloads/)
+- [Requests](https://requests.readthedocs.io/en/latest/user/install)
+
 ## Getting Started with PEWPMT
 1. Clone or download the repository to your local machine
-2. Make sure [Python](https://www.python.org/downloads/) is installed
-3. Replace the placeholder urls in `downloader.py` and `uploader.py` (see [Configuration](#configuration))
-4. Fill in your credentials in `uploader.py`, it's recommended that you generate a [wordpress application password](https://wordpress.com/support/security/two-step-authentication/application-specific-passwords/) for this
-5. Open a terminal, cd into the project folder and run
+2. Open a terminal and cd into the project folder
+3. Make sure [Python](https://www.python.org/downloads/) is installed by running
+    ```bash
+    python -V
+    ```
+3. Install requirements by running
+    ```bash
+      pip install -r requirements.txt 
+    ``` 
+4. Replace the placeholder urls in `downloader.py` and `uploader.py` (see [Configuration](#configuration))
+5. Fill in your credentials in `uploader.py`, it's recommended that you generate a [wordpress application password](https://wordpress.com/support/security/two-step-authentication/application-specific-passwords/) for this
+6. Open a terminal again, cd into the project folder and run
     ```
     python downloader.py
     ```
-6. Check the content of your .json file and test your uploader for a few posts before uploading them all by running
+7. Check the content of your generated .json file and upload the posts by running
     ```
     python uploader.py
     ```
+    :warning: WARNING: Don't upload everything on your first try! [Test it with a few posts first](#testing-with-a-few-posts-before-uploading-everything).
 
 ## Configuration
 ### downloader.py config
@@ -47,7 +61,7 @@ base_url = "https://public-api.wordpress.com/wp/v2/sites/<mysourcewordpresssite.
 ```
 #### Pagination
 Set the per_page variable to control how many posts to fetch per API call.  
-WARNING: My source websites stopped sending responses when per_page was set to a value over 8!!! 
+:warning: WARNING: My source websites stopped sending responses when per_page was set to a value over 8!
 Play around with it if you want but it will probably break on the first page for values over 12.
 
 ### uploader.py config
@@ -68,12 +82,12 @@ Update the credentials in uploader.py with your target WordPress username and ap
 target_username = '<username>'      # Replace with your actual username.
 target_password = '<password>'      # Replace with your WordPress app password.
 ```
-WARNING: Keep your credentials secure. Never share your username or password with anyone.
+:warning: WARNING: Keep your credentials secure. Never share your username or password with anyone.
 
 #### Featured Image Handling
 The uploader script includes a function upload_image() which downloads the image data from the old site, fetches the actual image URL, and uploads it to the target site. This function also adds a delay to avoid rate limits. Shut this off to speed up the process or lose your mind trying to understand why we have to ask the API for the image url twice.
 
-#### Testing with fewer than all posts
+#### Testing with a few posts before uploading everything
 Add a break command in the for loop in uploader.py, for example:
 ```py
 for idx, post in enumerate(all_posts, start=1):
