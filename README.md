@@ -29,7 +29,7 @@ It is ideal for developers or website administrators who need a free solution fo
 2. Open a terminal and cd into the project folder
 3. Make sure [Python](https://www.python.org/downloads/) is installed by running
     ```bash
-    python -V
+        python -V
     ```
 3. Install requirements by running
     ```bash
@@ -39,11 +39,11 @@ It is ideal for developers or website administrators who need a free solution fo
 5. Fill in your credentials in `uploader.py`, it's recommended that you generate a [wordpress application password](https://wordpress.com/support/security/two-step-authentication/application-specific-passwords/) for this
 6. Open a terminal again, cd into the project folder and run
     ```
-    python downloader.py
+        python downloader.py
     ```
 7. Check the content of your generated .json file and upload the posts by running
     ```
-    python uploader.py
+        python uploader.py
     ```
     :warning: WARNING: Don't upload everything on your first try! [Test it with a few posts first](#testing-with-a-few-posts-before-uploading-everything).
 
@@ -52,12 +52,12 @@ It is ideal for developers or website administrators who need a free solution fo
 #### API URLs
 Open downloader.py and update the base_url variable with your source WordPress site's REST API endpoint. For example:
 ```py
-base_url = "https://<mysourcewordpresssite.com>/wp-json/wp/v2/posts"
+    base_url = "https://<mysourcewordpresssite.com>/wp-json/wp/v2/posts"
 ```
 #### Free Wordpress Sites URLs
 If you are using a free WordPress.com site, you might need to use an alternative URL. Uncomment and adjust as needed:
 ```py
-base_url = "https://public-api.wordpress.com/wp/v2/sites/<mysourcewordpresssite.wordpress.com>/posts"
+    base_url = "https://public-api.wordpress.com/wp/v2/sites/<mysourcewordpresssite.wordpress.com>/posts"
 ```
 #### Pagination
 Set the per_page variable to control how many posts to fetch per API call.  
@@ -71,16 +71,16 @@ The uploader reads from wordpress_posts.json. Ensure this file exists (generated
 #### API URLs 
 Open uploader.py and update the variables with your source and target WordPress site's REST API endpoint. For example:
 ```py
-old_media_base_url = "https://<mysourcewordpresssite.com>/wp-json/wp/v2/media/"
-target_base_url = "https://<targetsite.com>/wp-json/wp/v2/posts"
-new_media_base_url = "https://<targetsite.com>/wp-json/wp/v2/media"
+    old_media_base_url = "https://<mysourcewordpresssite.com>/wp-json/wp/v2/media/"
+    target_base_url = "https://<targetsite.com>/wp-json/wp/v2/posts"
+    new_media_base_url = "https://<targetsite.com>/wp-json/wp/v2/media"
 ```
 
 #### Credentials
 Update the credentials in uploader.py with your target WordPress username and app password:
 ```py
-target_username = '<username>'      # Replace with your actual username.
-target_password = '<password>'      # Replace with your WordPress app password.
+    target_username = '<username>'      # Replace with your actual username.
+    target_password = '<password>'      # Replace with your WordPress app password.
 ```
 :warning: WARNING: Keep your credentials secure. Never share your username or password with anyone.
 
@@ -90,21 +90,21 @@ The uploader script includes a function upload_image() which downloads the image
 #### Testing with a few posts before uploading everything
 Add a break command in the for loop in uploader.py, for example:
 ```py
-for idx, post in enumerate(all_posts, start=1):
-    if idx > 4:
-        break
+    for idx, post in enumerate(all_posts, start=1):
+        if idx > 4:
+            break
 ```
 
 #### Customize post info
 To ensure you only get the info you need you will have to add or remove categories of data set by the `new_post_data` variable in the `uploader.py` file. 
 The default option only copies the title, the text content and the image of the original post. To see what other info is available, consult the relevant [wordpress api docs](https://developer.wordpress.org/rest-api/reference/posts/).
 ```py
-new_post_data = {
-        "title": post.get("title", {}).get("rendered", "Untitled"), # Post title
-        "content": post.get("content", {}).get("rendered", ""), # Post text content
-        "featured_media": image_id if image_id else None, # Post image
-        # ...
-}
+    new_post_data = {
+            "title": post.get("title", {}).get("rendered", "Untitled"), # Post title
+            "content": post.get("content", {}).get("rendered", ""), # Post text content
+            "featured_media": image_id if image_id else None, # Post image
+            # ...
+    }
 ```
 
 ## Contributing
