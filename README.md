@@ -33,7 +33,7 @@ It is ideal for developers or website administrators who need a free solution fo
     ```
 3. Install requirements by running
     ```bash
-      pip install -r requirements.txt 
+        pip install -r requirements.txt 
     ``` 
 4. Replace the placeholder urls in `downloader.py` and `uploader.py` (see [Configuration](#configuration))
 5. Fill in your credentials in `uploader.py`, it's recommended that you generate a [wordpress application password](https://wordpress.com/support/security/two-step-authentication/application-specific-passwords/) for this
